@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎨 Variables de color */
+:root {
+  --background: #f8f9fb;
+  --card: #ffffff;
+  --primary: #1f2937;
+  --accent: #3b82f6;
+  --text-muted: #6b7280;
+}
+
+/* Reset global */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Contenedor principal centrado */
+main {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Tarjetas modernas */
+.card {
+  @apply bg-[var(--card)] shadow-md rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  max-width: 100%; /* evita que se estiren más allá del contenedor */
+}
+
+/* Botones */
+.btn-primary, .btn-outline {
+  @apply px-6 py-3 rounded-lg text-lg font-semibold shadow transition;
+  width: auto;
+  max-width: 300px; /* para que no se estiren demasiado */
+}
+
+/* Estilos específicos de botones */
+.btn-primary {
+  @apply bg-[var(--primary)] text-white hover:bg-[var(--accent)];
+}
+
+.btn-outline {
+  @apply border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-white;
+}
+
+/* Título con degradado */
+.title-gradient {
+  @apply bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent;
+}
+
+/* Hero y secciones */
+section {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+}
+
+/* Formularios */
+form {
+  width: 100%;
+  max-width: 400px; /* evita que los inputs se estiren demasiado */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
