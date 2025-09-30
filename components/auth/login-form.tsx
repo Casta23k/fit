@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { Eye, EyeOff, Mail, Lock } from "lucide-react"
 import React from "react"
+import router from "next/router"
 
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -16,6 +17,8 @@ export function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    router.push("../info/page.tsx")
+  
 
     try {
       const res = await fetch("/api/login", {

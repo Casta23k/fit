@@ -1,0 +1,104 @@
+/* Register Page Specific Styles */
+
+.register-container {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  margin:100px;
+}
+
+.register-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.register-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.register-logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: white;
+}
+
+.register-logo-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.register-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.register-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+}
+
+.register-content {
+  padding: 2rem;
+}
+
+.register-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.register-footer-text {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.register-footer-link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.register-footer-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .register-container {
+    border-radius: 1rem;
+  }
+
+  .register-header {
+    padding: 2rem 1.5rem;
+  }
+
+  .register-logo-text {
+    font-size: 1.75rem;
+  }
+
+  .register-title {
+    font-size: 1.25rem;
+  }
+
+  .register-description {
+    font-size: 0.875rem;
+  }
+
+  .register-content {
+    padding: 1.5rem;
+  }
+}

@@ -32,21 +32,14 @@ export default function HomePage() {
             Transforma tu vida con FitLife
           </h2>
           <p className="text-xl sm:text-2xl text-[var(--text-muted)] mb-8">
-            La aplicación de fitness que te motiva a alcanzar tus metas. Entrena, progresa y celebra cada logro en tu camino hacia una vida más saludable.
+            La aplicación de fitness que te motiva a alcanzar tus metas. Entrena, progresa y celebra cada logro en tu
+            camino hacia una vida más saludable.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/register">
-              <button className="btn-primary px-8 py-4 text-lg w-auto">Comenzar Gratis</button>
-            </Link>
-            <Link href="/login">
-              <button className="btn-outline px-8 py-4 text-lg w-auto">Ya tengo cuenta</button>
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-20 max-w-6xl mx-auto px-4">
+      <section className="py-2 max-w-6xl mx-auto px-4">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <Card className="card p-6 rounded-2xl min-h-[20rem] flex flex-col justify-center">
             <CardContent className="flex flex-col items-center gap-4">

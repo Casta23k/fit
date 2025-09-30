@@ -1,0 +1,171 @@
+/* ===========================
+   Estilos Globales de Formularios
+   Archivo: formu.css
+   =========================== */
+
+/* Variables base */
+:root {
+  --primary: #a855f7;        /* violeta principal */
+  --primary-hover: #9333ea;  /* violeta oscuro */
+  --orange: #f97316;         /* naranja */
+  --orange-hover: #ea580c;   /* naranja oscuro */
+  --border-color: #e5e7eb;   /* gris claro */
+  --text-muted: #6b7280;     /* gris texto */
+}
+
+/* Fondo general con degradado blanco-naranja */
+body {
+  background: linear-gradient(135deg, #ffffff 0%, #fff7ed 40%, #f97316 100%);
+  font-family: "Inter", sans-serif;
+  color: #111827;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.formu-container {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  margin: 2rem auto;
+}
+
+/* Header */
+.formu-header {
+  padding: 2.5rem 2rem 1rem;
+  text-align: center;
+}
+
+.formu-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.formu-logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--orange);
+}
+
+.formu-logo-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.formu-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.formu-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Contenido */
+.formu-content {
+  padding: 2rem;
+}
+
+/* Campos */
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--primary-hover);
+}
+
+/* Botón */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--orange);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: var(--orange-hover);
+}
+
+/* Footer */
+.formu-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.formu-footer-text {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.formu-footer-link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.formu-footer-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .formu-container {
+    border-radius: 1rem;
+    margin: 1rem;
+  }
+
+  .formu-header {
+    padding: 2rem 1.5rem 1rem;
+  }
+
+  .formu-logo-text {
+    font-size: 1.75rem;
+  }
+
+  .formu-title {
+    font-size: 1.25rem;
+  }
+
+  .formu-description {
+    font-size: 0.875rem;
+  }
+
+  .formu-content {
+    padding: 1.5rem;
+  }
+}
