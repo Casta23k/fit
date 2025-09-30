@@ -1,0 +1,29 @@
+/* Header Styles - Tailwind v3 Compatible */
+
+.profile-header {
+  @apply bg-orange-400 px-6 py-4 flex items-center justify-between;
+}
+
+.profile-header-left {
+  @apply flex items-center gap-4;
+}
+
+.profile-header-menu-btn {
+  @apply text-gray-800 hover:text-gray-900 transition-colors;
+}
+
+.profile-header-title {
+  @apply text-xl font-semibold text-gray-800;
+}
+
+.profile-header-user-btn {
+  @apply bg-white rounded-full p-2 hover:bg-gray-100 transition-colors;
+}
+
+.profile-header-icon {
+  @apply w-6 h-6;
+}
+
+.profile-header-user-icon {
+  @apply w-6 h-6 text-gray-800;
+}
