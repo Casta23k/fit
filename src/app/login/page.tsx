@@ -1,14 +1,44 @@
-import { LoginForm } from "@/components/auth/login-form"
-import { Dumbbell } from "lucide-react"
-import Link from "next/link"
-import "../styles/login.css"
+"use client";
+
+import { useState } from "react";
+import { Dumbbell } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import "../styles/login.css";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const res = await fetch("/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        router.push("/dashboard"); // redirigir tras login exitoso
+      } else {
+        setError(data.message);
+      }
+    } catch (err) {
+      setError("Error de conexión");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-100 flex items-center justify-center p-4 sm:p-6 lg:p-8">
       <div className="w-full max-w-md mx-auto">
         <div className="login-container">
-          {/* Header con logo y título */}
           <div className="login-header">
             <div className="login-logo">
               <Dumbbell className="login-logo-icon" />
@@ -18,9 +48,27 @@ export default function LoginPage() {
             <p className="login-description">Inicia sesión para continuar tu journey fitness</p>
           </div>
 
-          {/* Contenido del formulario */}
           <div className="login-content">
-            <LoginForm />
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {error && <p className="text-red-500">{error}</p>}
+              <input
+                type="email"
+                placeholder="Correo electrónico"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="border p-2 w-full rounded"
+              />
+              <input
+                type="password"
+                placeholder="Contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="border p-2 w-full rounded"
+              />
+              <button type="submit" className="bg-blue-500 text-white w-full py-2 rounded">
+                Iniciar sesión
+              </button>
+            </form>
 
             <div className="login-footer">
               <p className="login-footer-text">
@@ -34,5 +82,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

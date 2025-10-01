@@ -20,3 +20,11 @@ model User {
   password  String
   createdAt DateTime @default(now())
 }
+model Plan {
+  id        Int      @id @default(autoincrement())
+  name      String
+  days      Json     // guardamos los días como array de strings ["Lunes","Martes",...]
+  type      String   // "Cardio", "Fuerza", "Mixto"
+  reminder  String   // "HH:mm"
+  createdAt DateTime @default(now())
+}

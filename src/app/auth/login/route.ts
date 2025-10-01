@@ -1,34 +1,30 @@
-import type { NextApiRequest, NextApiResponse } from "next"
-import { PrismaClient } from "@prisma/client"
-import bcrypt from "bcryptjs"
+import { NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Método no permitido" })
-  }
-
-  const { email, password } = req.body
+export async function POST(req: Request) {
+  const { email, password } = await req.json();
 
   if (!email || !password) {
-    return res.status(400).json({ message: "Faltan campos requeridos" })
+    return NextResponse.json({ message: "Faltan campos requeridos" }, { status: 400 });
   }
 
   try {
-    const user = await prisma.user.findUnique({ where: { email } })
+    const user = await prisma.user.findUnique({ where: { email } });
     if (!user) {
-      return res.status(401).json({ message: "Usuario o contraseña incorrectos" })
+      return NextResponse.json({ message: "Usuario o contraseña incorrectos" }, { status: 401 });
     }
 
-    const isValid = await bcrypt.compare(password, user.password)
+    const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) {
-      return res.status(401).json({ message: "Usuario o contraseña incorrectos" })
+      return NextResponse.json({ message: "Usuario o contraseña incorrectos" }, { status: 401 });
     }
 
-    return res.status(200).json({ message: "Login exitoso", userId: user.id })
+    return NextResponse.json({ message: "Login exitoso", userId: user.id }, { status: 200 });
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({ message: "Error interno del servidor" })
+    console.error("Error en login:", error);
+    return NextResponse.json({ message: "Error interno del servidor" }, { status: 500 });
   }
 }

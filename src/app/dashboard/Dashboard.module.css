@@ -1,0 +1,43 @@
+/* Sidebar links animados */
+.sidebarLink {
+  @apply block px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer;
+}
+
+.sidebarLink:hover {
+  @apply bg-orange-400 text-white shadow-lg translate-x-1;
+}
+
+.logout {
+  @apply bg-red-500 text-white font-semibold text-center rounded-lg py-2 mt-4 transition-all duration-300;
+}
+
+.logout:hover {
+  @apply bg-red-600 shadow-lg translate-y-1;
+}
+
+/* Botones de días animados */
+.dayButton {
+  @apply px-3 py-2 rounded-lg border border-gray-300 font-medium transition-all duration-300;
+}
+
+.dayActive {
+  @apply bg-orange-400 text-white shadow-lg scale-105;
+}
+
+.dayInactive {
+  @apply bg-gray-100 text-gray-700 hover:bg-orange-300 hover:text-white;
+}
+
+/* Formulario animado */
+.formCard {
+  @apply bg-white p-8 rounded-xl shadow-xl max-w-2xl mx-auto transition-transform duration-500 transform;
+}
+
+.formCard:hover {
+  @apply scale-105 shadow-2xl;
+}
+
+/* Botón guardar animado */
+.saveButton {
+  @apply w-full bg-orange-400 text-white font-bold p-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-orange-500;
+}

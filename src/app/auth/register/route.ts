@@ -1,36 +1,33 @@
-import type { NextApiRequest, NextApiResponse } from "next"
-import { PrismaClient } from "@prisma/client"
-import bcrypt from "bcryptjs"
+import { NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Método no permitido" })
-  }
-
-  const { name, email, password } = req.body
+export async function POST(req: Request) {
+  const { name, email, password } = await req.json();
 
   if (!name || !email || !password) {
-    return res.status(400).json({ message: "Faltan campos requeridos" })
+    return NextResponse.json({ message: "Faltan campos requeridos" }, { status: 400 });
   }
 
   try {
-    const existingUser = await prisma.user.findUnique({ where: { email } })
+    const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
-      return res.status(400).json({ message: "El email ya está registrado" })
+      return NextResponse.json({ message: "El email ya está registrado" }, { status: 400 });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10)
-
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await prisma.user.create({
       data: { name, email, password: hashedPassword },
-    })
+    });
 
-    return res.status(201).json({ message: "Usuario creado exitosamente", userId: newUser.id })
+    return NextResponse.json(
+      { message: "Usuario creado exitosamente", userId: newUser.id },
+      { status: 201 }
+    );
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({ message: "Error interno del servidor" })
+    console.error("Error en registro:", error);
+    return NextResponse.json({ message: "Error interno del servidor" }, { status: 500 });
   }
 }
-
