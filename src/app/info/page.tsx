@@ -1,7 +1,7 @@
 // src/pages/register-info.tsx
 import { Dumbbell } from "lucide-react"
 import Link from "next/link"
-import "../style/formu.css"
+import "../styles/formu.css"
 
 export default function RegisterInfoPage() {
   return (

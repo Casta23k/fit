@@ -14,17 +14,20 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  plans    Plan[]
 }
+
 model Plan {
   id        Int      @id @default(autoincrement())
   name      String
-  days      Json     // guardamos los días como array de strings ["Lunes","Martes",...]
-  type      String   // "Cardio", "Fuerza", "Mixto"
-  reminder  String   // "HH:mm"
+  days      Json
+  type      String
+  reminder  String
   createdAt DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
 }

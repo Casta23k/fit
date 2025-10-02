@@ -5,25 +5,27 @@ const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   try {
-    const { name, days, type, reminder } = await req.json();
+    const body = await req.json();
+    const { userId, name, days, type, reminder } = body;
 
-    if (!name || !days || !type || !reminder) {
-      return NextResponse.json({ message: "Faltan campos requeridos" }, { status: 400 });
+    if (!userId || !name) {
+      return NextResponse.json({ message: "userId y name son requeridos" }, { status: 400 });
     }
 
+    // Crear plan en la base de datos
     const newPlan = await prisma.plan.create({
       data: {
         name,
-        days,    // array de strings directamente
+        days,     // Guardamos como Json
         type,
         reminder,
+        userId: Number(userId),
       },
     });
 
-    return NextResponse.json({ message: "Plan creado", planId: newPlan.id }, { status: 201 });
+    return NextResponse.json({ message: "Plan creado", plan: newPlan });
   } catch (error) {
-    console.error("Error al crear plan:", error);
-    return NextResponse.json({ message: "Error interno del servidor" }, { status: 500 });
+    console.error("❌ Error creando plan:", error);
+    return NextResponse.json({ message: "Error interno" }, { status: 500 });
   }
 }
-

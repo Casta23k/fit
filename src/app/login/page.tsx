@@ -26,6 +26,9 @@ export default function LoginPage() {
       const data = await res.json();
 
       if (res.ok) {
+        // ✅ Guardamos el ID del usuario en localStorage
+        localStorage.setItem("userId", data.userId);
+
         router.push("/dashboard"); // redirigir tras login exitoso
       } else {
         setError(data.message);

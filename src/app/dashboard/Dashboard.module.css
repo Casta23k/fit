@@ -1,43 +1,245 @@
-/* Sidebar links animados */
-.sidebarLink {
-  @apply block px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer;
+/* Dashboard.module.css */
+
+/* Contenedor principal */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f6fa;
+  transition: background 0.3s;
 }
 
-.sidebarLink:hover {
-  @apply bg-orange-400 text-white shadow-lg translate-x-1;
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background-color: #1e272e;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+  transition: all 0.3s;
 }
 
-.logout {
-  @apply bg-red-500 text-white font-semibold text-center rounded-lg py-2 mt-4 transition-all duration-300;
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #ff9f43;
 }
 
-.logout:hover {
-  @apply bg-red-600 shadow-lg translate-y-1;
+/* Navegación */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* Botones de días animados */
-.dayButton {
-  @apply px-3 py-2 rounded-lg border border-gray-300 font-medium transition-all duration-300;
+.navItem {
+  color: #dcdde1;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-.dayActive {
-  @apply bg-orange-400 text-white shadow-lg scale-105;
+.navItem:hover,
+.navItem.active {
+  background-color: #40739e;
+  color: #fff;
+  transform: translateX(3px);
 }
 
-.dayInactive {
-  @apply bg-gray-100 text-gray-700 hover:bg-orange-300 hover:text-white;
+/* Área principal */
+.main {
+  margin-left: 240px;
+  flex: 1;
+  padding: 50px;
+  transition: margin-left 0.3s;
 }
 
-/* Formulario animado */
-.formCard {
-  @apply bg-white p-8 rounded-xl shadow-xl max-w-2xl mx-auto transition-transform duration-500 transform;
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.formCard:hover {
-  @apply scale-105 shadow-2xl;
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2f3640;
 }
 
-/* Botón guardar animado */
-.saveButton {
-  @apply w-full bg-orange-400 text-white font-bold p-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-orange-500;
+.createButton {
+  background-color: #ff9f43;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(255,159,67,0.4);
+  text-decoration: none;
+}
+
+.createButton:hover {
+  background-color: #ff793f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255,121,63,0.5);
+}
+
+/* Cards */
+.card {
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #2f3640;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #718093;
+  margin: 4px 0;
+}
+
+/* Chips de días */
+.days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dayChip {
+  padding: 8px 16px;
+  border-radius: 25px;
+  border: 1px solid #dcdde1;
+  background-color: #f5f6fa;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.dayChip:hover {
+  background-color: #dcdde1;
+}
+
+.activeDay {
+  background-color: #40739e;
+  color: #fff;
+  border-color: #40739e;
+}
+
+/* Lista de planes */
+.planList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.planItem {
+  background-color: #f5f6fa;
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.planItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+}
+
+.planDetails {
+  color: #718093;
+  font-size: 14px;
+}
+
+/* Formulario */
+.input, .select {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #dcdde1;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input:focus, .select:focus {
+  border-color: #40739e;
+  box-shadow: 0 0 5px rgba(64,115,158,0.5);
+}
+
+/* Botones */
+.btnPrimary {
+  background-color: #40739e;
+  color: #fff;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(64,115,158,0.3);
+}
+
+.btnPrimary:hover {
+  background-color: #2f3640;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(47,54,64,0.4);
+}
+
+/* Responsivo */
+@media (max-width: 1000px) {
+  .main {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    padding: 10px 0;
+    justify-content: space-around;
+    box-shadow: none;
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: 12px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .navItem {
+    padding: 8px 12px;
+  }
 }
